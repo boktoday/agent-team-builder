@@ -23,7 +23,7 @@ export default function About() {
     },
     {
       question: 'Which AI providers can I use?',
-      answer: 'You can connect any of these: OpenRouter.ai (100+ models), Venice AI (uncensored), Mason AI (coding), Skillboss (business agents), OpenAI, and Anthropic Claude. Bring your own API keys.'
+      answer: 'You can connect any of these: OpenRouter.ai (100+ models), Venice AI (uncensored), Maton AI (coding), Skillboss (business agents), OpenAI, and Anthropic Claude. Bring your own API keys.'
     },
     {
       question: 'Is there a monthly subscription?',
@@ -112,7 +112,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-6">
             {[
               ['🤖', '68+ Pre-Built Agents', 'AI Engineer, Content Creator, Marketing Specialist, QA Tester, and many more'],
-              ['🔗', '4+ AI Integrations', 'OpenRouter, Venice AI, Mason AI, Skillboss—bring your own keys'],
+              ['🔗', '4+ AI Integrations', 'OpenRouter, Venice AI, Maton AI, Skillboss—bring your own keys'],
               ['📦', 'Complete Export', 'Python project with agents, prompts, config, and docs'],
               ['🧠', 'CLAUDE.md Included', 'Context file for AI collaboration in your exported repo'],
               ['🔐', 'Secure & Private', 'Your data encrypted, API keys never shared'],

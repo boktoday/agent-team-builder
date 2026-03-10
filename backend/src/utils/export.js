@@ -88,7 +88,7 @@ OPENROUTER_API_KEY=
 # Venice AI - Uncensored Models (https://venice.ai)
 VENICE_API_KEY=
 
-# Mason AI - Coding Assistant (https://mason.ai)
+# Maton AI - Coding Assistant (https://maton.ai)
 MASON_API_KEY=
 
 # Skillboss.co - Business Agents (https://skillboss.co)
@@ -149,7 +149,7 @@ ${agents.map(a => `- **${a.agent_name}** (${a.agent_category})`).join('\n')}
 This team supports multiple AI providers:
 - **OpenRouter.ai** - 100+ models
 - **Venice AI** - Uncensored
-- **Mason AI** - Coding
+- **Maton AI** - Coding
 - **Skillboss** - Business agents
 
 ## Configuration

@@ -19,14 +19,14 @@ export default function Settings() {
   const [apiKeys, setApiKeys] = useState({
     openrouter: '',
     venice: '',
-    mason: '',
+    maton: '',
     skillboss: ''
   });
 
   const [showKeys, setShowKeys] = useState({
     openrouter: false,
     venice: false,
-    mason: false,
+    maton: false,
     skillboss: false
   });
 
@@ -115,12 +115,12 @@ export default function Settings() {
       models: 'Venice GPT, Venice Image, Uncensored models'
     },
     {
-      id: 'mason',
-      name: 'Mason AI',
+      id: 'maton',
+      name: 'Maton AI',
       description: 'Specialized AI for coding and development',
       logo: '🧱',
-      docs: 'https://mason.ai',
-      placeholder: 'mason_xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+      docs: 'https://maton.ai',
+      placeholder: 'maton_xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
       models: 'Code assistant, Debugger, Code reviewer'
     },
     {

@@ -18,7 +18,7 @@ export default function Landing() {
     {
       icon: '🔗',
       title: 'Your Tools, Your Choice',
-      description: 'Connect OpenRouter, Venice AI, Mason AI, or Skillboss. Bring your own API keys.'
+      description: 'Connect OpenRouter, Venice AI, Maton AI, or Skillboss. Bring your own API keys.'
     },
     {
       icon: '📦',
