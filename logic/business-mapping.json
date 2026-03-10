@@ -1,0 +1,276 @@
+{
+  "$schema": "./business-mapping.schema.json",
+  "version": "1.0.0",
+  
+  "businessTypes": {
+    "ecommerce": {
+      "description": "Online retail and e-commerce businesses",
+      "priorityCategories": ["Marketing", "Product", "Support"],
+      "mustHaveAgents": ["content-creator", "social-media-strategist", "analytics-reporter"],
+      "niceToHaveAgents": ["instagram-curator", "tiktok-strategist", "xiaohongshu-specialist", "support-responder"],
+      "optionalAgents": ["ui-designer", "xr-immersive-developer", "behavioral-nudge-engine"]
+    },
+    "saas": {
+      "description": "Software as a Service products",
+      "priorityCategories": ["Engineering", "Product", "Marketing"],
+      "mustHaveAgents": ["ai-engineer", "product-manager", "growth-hacker"],
+      "niceToHaveAgents": ["technical-writer", "app-store-optimizer", "frontend-developer", "security-engineer"],
+      "optionalAgents": ["xr-immersive-developer", "visual-storyteller", "inclusive-visuals"]
+    },
+    "agency": {
+      "description": "Digital agencies, marketing agencies, design studios",
+      "priorityCategories": ["Design", "Marketing", "Project Management"],
+      "mustHaveAgents": ["project-shepherd", "studio-producer", "content-creator"],
+      "niceToHaveAgents": ["brand-guardian", "ui-designer", "social-media-strategist", "experiment-tracker"],
+      "optionalAgents": ["cultural-intelligence", "developer-advocate", "lsp-index-engineer"]
+    },
+    "startup": {
+      "description": "Early-stage startups",
+      "priorityCategories": ["Engineering", "Product", "Marketing"],
+      "mustHaveAgents": ["rapid-prototyper", "ai-engineer", "growth-hacker"],
+      "niceToHaveAgents": ["senior-developer", "frontend-developer", "content-creator", "technical-writer"],
+      "optionalAgents": ["backend-architect", "security-engineer", "devops-automator"]
+    },
+    "enterprise": {
+      "description": "Large established organizations",
+      "priorityCategories": ["Engineering", "Support", "Project Management"],
+      "mustHaveAgents": ["security-engineer", "senior-project-manager", "analytics-reporter"],
+      "niceToHaveAgents": ["devops-automator", "legal-compliance-checker", "infrastructure-maintainer", "executive-summary-generator"],
+      "optionalAgents": ["autonomous-optimization", "workflow-optimizer", "evidence-collector"]
+    },
+    "fintech": {
+      "description": "Financial technology companies",
+      "priorityCategories": ["Engineering", "Support", "Compliance"],
+      "mustHaveAgents": ["security-engineer", "legal-compliance-checker", "data-engineer"],
+      "niceToHaveAgents": ["backend-architect", "analytics-reporter", "finance-tracker", "api-tester"],
+      "optionalAgents": ["frontend-developer", "mobile-app-builder", "performance-benchmarker"]
+    },
+    "healthcare": {
+      "description": "Healthcare and medical technology",
+      "priorityCategories": ["Engineering", "Support", "Compliance"],
+      "mustHaveAgents": ["legal-compliance-checker", "security-engineer", "data-analytics-reporter"],
+      "niceToHaveAgents": ["backend-architect", "mobile-app-builder", "accessibility-auditor", "test-results-analyzer"],
+      "optionalAgents": ["ux-researcher", "inclusive-visuals", "xr-immersive-developer"]
+    },
+    "education": {
+      "description": "EdTech and educational institutions",
+      "priorityCategories": ["Design", "Product", "Content"],
+      "mustHaveAgents": ["ux-researcher", "content-creator", "inclusive-visuals"],
+      "niceToHaveAgents": ["ux-architect", "mobile-app-builder", "trend-researcher", "behavioral-nudge-engine"],
+      "optionalAgents": ["visual-storyteller", "whimsy-injector", "xr-immersive-developer"]
+    },
+    "retail": {
+      "description": "Physical and online retail",
+      "priorityCategories": ["Marketing", "Support", "Product"],
+      "mustHaveAgents": ["social-media-strategist", "support-responder", "analytics-reporter"],
+      "niceToHaveAgents": ["instagram-curator", "content-creator", "feedback-synthesizer", "app-store-optimizer"],
+      "optionalAgents": ["ui-designer", "visual-storyteller", "xr-cockpit-interaction"]
+    },
+    "media": {
+      "description": "Media, entertainment, and content platforms",
+      "priorityCategories": ["Design", "Marketing", "Content"],
+      "mustHaveAgents": ["visual-storyteller", "content-creator", "social-media-strategist"],
+      "niceToHaveAgents": ["image-prompt-engineer", "twitter-engager", "reddit-community-builder", "trend-researcher"],
+      "optionalAgents": ["xr-immersive-developer", "whimsy-injector", "feedback-synthesizer"]
+    }
+  },
+
+  "teamSizes": {
+    "1-5": {
+      "description": "Solo founder or very small team",
+      "maxRecommendedAgents": 5,
+      "focus": "Core essential agents only",
+      "recommendedAgents": ["agents-orchestrator", "rapid-prototyper", "growth-hacker", "content-creator", "analytics-reporter"]
+    },
+    "6-20": {
+      "description": "Small team with defined roles",
+      "maxRecommendedAgents": 12,
+      "focus": "Balance of specialized and general agents",
+      "recommendedAgents": ["senior-developer", "project-shepherd", "content-creator", "frontend-developer", "backend-architect", "social-media-strategist", "analytics-reporter", "support-responder", "technical-writer", "ux-researcher", "feedback-synthesizer", "api-tester"]
+    },
+    "21-100": {
+      "description": "Mid-size team with departments",
+      "maxRecommendedAgents": 25,
+      "focus": "Department-specific agents with coordination",
+      "recommendedAgents": ["senior-project-manager", "studio-operations", "agents-orchestrator", "ai-engineer", "backend-architect", "frontend-developer", "mobile-app-builder", "data-engineer", "devops-automator", "security-engineer", "content-creator", "growth-hacker", "social-media-strategist", "instagram-curator", "twitter-engager", "analytics-reporter", "support-responder", "feedback-synthesizer", "experiment-tracker", "api-tester", "performance-benchmarker", "legal-compliance-checker", "finance-tracker", "infrastructure-maintainer", "executive-summary-generator"]
+    },
+    "100+": {
+      "description": "Large organization with multiple teams",
+      "maxRecommendedAgents": 40,
+      "focus": "Full ecosystem with specialization and governance",
+      "recommendedAgents": ["agents-orchestrator", "senior-project-manager", "studio-producer", "studio-operations", "experiment-tracker", "ai-engineer", "backend-architect", "frontend-developer", "mobile-app-builder", "data-engineer", "devops-automator", "security-engineer", "senior-developer", "technical-writer", "autonomous-optimization", "content-creator", "growth-hacker", "social-media-strategist", "instagram-curator", "tiktok-strategist", "twitter-engager", "reddit-community-builder", "app-store-optimizer", "brand-guardian", "ui-designer", "ux-architect", "ux-researcher", "visual-storyteller", "sprint-prioritizer", "feedback-synthesizer", "trend-researcher", "behavioral-nudge-engine", "analytics-reporter", "data-analytics-reporter", "executive-summary-generator", "support-responder", "finance-tracker", "infrastructure-maintainer", "legal-compliance-checker", "api-tester", "performance-benchmarker", "accessibility-auditor", "workflow-optimizer"]
+    }
+  },
+
+  "industries": {
+    "tech": {
+      "description": "Technology sector",
+      "specializedAgents": ["ai-engineer", "backend-architect", "frontend-developer", "mobile-app-builder", "data-engineer", "devops-automator", "security-engineer", "technical-writer", "lsp-index-engineer"],
+      "recommendedCategories": ["Engineering", "Testing", "Specialized"]
+    },
+    "healthcare_medical": {
+      "description": "Healthcare and medical",
+      "specializedAgents": ["legal-compliance-checker", "security-engineer", "accessibility-auditor", "data-analytics-reporter", "mobile-app-builder", "ux-researcher", "inclusive-visuals"],
+      "recommendedCategories": ["Engineering", "Support", "Testing"]
+    },
+    "finance": {
+      "description": "Finance and banking",
+      "specializedAgents": ["security-engineer", "legal-compliance-checker", "data-engineer", "finance-tracker", "api-tester", "performance-benchmarker", "compliance-checker"],
+      "recommendedCategories": ["Engineering", "Support", "Testing"]
+    },
+    "education": {
+      "description": "Education and training",
+      "specializedAgents": ["ux-researcher", "content-creator", "inclusive-visuals", "behavioral-nudge-engine", "trend-researcher", "visual-storyteller", "mobile-app-builder"],
+      "recommendedCategories": ["Design", "Product", "Marketing"]
+    },
+    "retail": {
+      "description": "Retail and e-commerce",
+      "specializedAgents": ["content-creator", "social-media-strategist", "instagram-curator", "analytics-reporter", "support-responder", "feedback-synthesizer", "app-store-optimizer"],
+      "recommendedCategories": ["Marketing", "Support", "Product"]
+    },
+    "manufacturing": {
+      "description": "Manufacturing and logistics",
+      "specializedAgents": ["data-engineer", "analytics-reporter", "devops-automator", "infrastructure-maintainer", "safety-engineer"],
+      "recommendedCategories": ["Engineering", "Specialized", "Support"]
+    },
+    "real_estate": {
+      "description": "Real estate and property",
+      "specializedAgents": ["content-creator", "visual-storyteller", "social-media-strategist", "analytics-reporter", "support-responder", "image-prompt-engineer"],
+      "recommendedCategories": ["Marketing", "Design", "Support"]
+    },
+    "food_restaurant": {
+      "description": "Food and restaurant industry",
+      "specializedAgents": ["content-creator", "instagram-curator", "social-media-strategist", "support-responder", "analytics-reporter", "feedback-synthesizer"],
+      "recommendedCategories": ["Marketing", "Support", "Product"]
+    },
+    "travel_hospitality": {
+      "description": "Travel and hospitality",
+      "specializedAgents": ["content-creator", "visual-storyteller", "social-media-strategist", "instagram-curator", "support-responder", "analytics-reporter", "trend-researcher"],
+      "recommendedCategories": ["Marketing", "Design", "Support"]
+    },
+    "entertainment": {
+      "description": "Entertainment and media",
+      "specializedAgents": ["visual-storyteller", "content-creator", "image-prompt-engineer", "twitter-engager", "reddit-community-builder", "trend-researcher", "whimsy-injector"],
+      "recommendedCategories": ["Design", "Marketing", "Product"]
+    }
+  },
+
+  "goals": {
+    "build": {
+      "description": "Building MVP or new product",
+      "priorityAgents": ["rapid-prototyper", "ai-engineer", "frontend-developer", "backend-architect", "technical-writer", "ux-researcher", "feedback-synthesizer"],
+      "scoring": {
+        "mustHave": ["rapid-prototyper", "ai-engineer", "frontend-developer"],
+        "niceToHave": ["backend-architect", "ux-researcher", "technical-writer", "feedback-synthesizer"],
+        "optional": ["security-engineer", "performance-benchmarker", "accessibility-auditor"]
+      }
+    },
+    "market": {
+      "description": "Marketing and customer acquisition",
+      "priorityAgents": ["growth-hacker", "content-creator", "social-media-strategist", "instagram-curator", "tiktok-strategist", "twitter-engager", "app-store-optimizer"],
+      "scoring": {
+        "mustHave": ["growth-hacker", "content-creator", "social-media-strategist"],
+        "niceToHave": ["instagram-curator", "app-store-optimizer", "analytics-reporter", "feedback-synthesizer"],
+        "optional": ["tiktok-strategist", "reddit-community-builder", "visual-storyteller"]
+      }
+    },
+    "scale": {
+      "description": "Scaling operations and team",
+      "priorityAgents": ["senior-project-manager", "studio-operations", "devops-automator", "data-engineer", "infrastructure-maintainer", "experiment-tracker"],
+      "scoring": {
+        "mustHave": ["devops-automator", "data-engineer", "experiment-tracker"],
+        "niceToHave": ["senior-project-manager", "studio-operations", "infrastructure-maintainer", "analytics-reporter"],
+        "optional": ["autonomous-optimization", "workflow-optimizer", "agents-orchestrator"]
+      }
+    },
+    "optimize": {
+      "description": "Optimizing existing processes",
+      "priorityAgents": ["autonomous-optimization", "workflow-optimizer", "performance-benchmarker", "api-tester", "test-results-analyzer", "evidence-collector"],
+      "scoring": {
+        "mustHave": ["autonomous-optimization", "workflow-optimizer", "performance-benchmarker"],
+        "niceToHave": ["api-tester", "test-results-analyzer", "evidence-collector", "reality-checker"],
+        "optional": ["tool-evaluator", "accessibility-auditor", "data-analytics-reporter"]
+      }
+    },
+    "launch": {
+      "description": "Product launch or major release",
+      "priorityAgents": ["content-creator", "social-media-strategist", "technical-writer", "app-store-optimizer", "growth-hacker", "analytics-reporter"],
+      "scoring": {
+        "mustHave": ["content-creator", "social-media-strategist", "technical-writer"],
+        "niceToHave": ["app-store-optimizer", "growth-hacker", "analytics-reporter", "feedback-synthesizer"],
+        "optional": ["visual-storyteller", "image-prompt-engineer", "reddit-community-builder"]
+      }
+    },
+    "maintain": {
+      "description": "Maintaining and supporting product",
+      "priorityAgents": ["support-responder", "infrastructure-maintainer", "security-engineer", "api-tester", "analytics-reporter"],
+      "scoring": {
+        "mustHave": ["support-responder", "infrastructure-maintainer", "security-engineer"],
+        "niceToHave": ["api-tester", "analytics-reporter", "legal-compliance-checker"],
+        "optional": ["executive-summary-generator", "finance-tracker", "test-results-analyzer"]
+      }
+    }
+  },
+
+  "budgetLevels": {
+    "starter": {
+      "description": "Limited budget (<$1k/month)",
+      "maxAgents": 3,
+      "recommendation": "Focus on high-impact multi-tasker agents",
+      "recommendedAgents": ["agents-orchestrator", "rapid-prototyper", "content-creator"]
+    },
+    "growth": {
+      "description": "Moderate budget ($1k-5k/month)",
+      "maxAgents": 8,
+      "recommendation": "Core team with specialized roles",
+      "recommendedAgents": ["agents-orchestrator", "senior-developer", "content-creator", "growth-hacker", "analytics-reporter", "frontend-developer", "support-responder", "technical-writer"]
+    },
+    "scale": {
+      "description": "Growing budget ($5k-20k/month)",
+      "maxAgents": 20,
+      "recommendation": "Full team with department coverage",
+      "recommendedAgents": ["senior-project-manager", "ai-engineer", "backend-architect", "frontend-developer", "mobile-app-builder", "data-engineer", "devops-automator", "security-engineer", "content-creator", "growth-hacker", "social-media-strategist", "analytics-reporter", "support-responder", "feedback-synthesizer", "technical-writer", "ux-researcher", "brand-guardian", "experiment-tracker", "api-tester", "infrastructure-maintainer"]
+    },
+    "enterprise": {
+      "description": "Enterprise budget (>$20k/month)",
+      "maxAgents": 45,
+      "recommendation": "Full ecosystem with all agents",
+      "recommendedAgents": "ALL_AGENTS"
+    }
+  },
+
+  "agentCategories": {
+    "Design": ["brand-guardian", "ui-designer", "ux-architect", "ux-researcher", "visual-storyteller", "image-prompt-engineer", "inclusive-visuals", "whimsy-injector"],
+    "Engineering": ["ai-engineer", "backend-architect", "frontend-developer", "mobile-app-builder", "data-engineer", "devops-automator", "security-engineer", "senior-developer", "rapid-prototyper", "technical-writer", "autonomous-optimization"],
+    "Marketing": ["content-creator", "growth-hacker", "social-media-strategist", "instagram-curator", "tiktok-strategist", "twitter-engager", "reddit-community-builder", "wechat-official-account", "xiaohongshu-specialist", "zhihu-strategist", "app-store-optimizer"],
+    "Product": ["sprint-prioritizer", "feedback-synthesizer", "trend-researcher", "behavioral-nudge-engine"],
+    "Project_Management": ["senior-project-manager", "project-shepherd", "studio-operations", "studio-producer", "experiment-tracker"],
+    "Spatial_Computing": ["visiones-spatial-engineer", "xr-immersive-developer", "xr-interface-architect", "xr-cockpit-interaction", "macos-spatial-metal", "terminal-integration"],
+    "Specialized": ["agents-orchestrator", "developer-advocate", "cultural-intelligence", "data-analytics-reporter", "data-consolidation", "report-distribution", "sales-data-extraction", "lsp-index-engineer"],
+    "Support": ["support-responder", "analytics-reporter", "executive-summary-generator", "finance-tracker", "infrastructure-maintainer", "legal-compliance-checker"],
+    "Testing": ["accessibility-auditor", "api-tester", "performance-benchmarker", "test-results-analyzer", "evidence-collector", "reality-checker", "tool-evaluator", "workflow-optimizer"]
+  },
+
+  "scoringWeights": {
+    "mustHave": 3,
+    "niceToHave": 2,
+    "optional": 1,
+    "categoryMatch": 1.5,
+    "goalMatch": 2,
+    "industryMatch": 1.5,
+    "businessTypeMatch": 1.5,
+    "teamSizeFit": 1
+  },
+
+  "allAgents": [
+    "brand-guardian", "ui-designer", "ux-architect", "ux-researcher", "visual-storyteller", "image-prompt-engineer", "inclusive-visuals", "whimsy-injector",
+    "ai-engineer", "backend-architect", "frontend-developer", "mobile-app-builder", "data-engineer", "devops-automator", "security-engineer", "senior-developer", "rapid-prototyper", "technical-writer", "autonomous-optimization",
+    "content-creator", "growth-hacker", "social-media-strategist", "instagram-curator", "tiktok-strategist", "twitter-engager", "reddit-community-builder", "wechat-official-account", "xiaohongshu-specialist", "zhihu-strategist", "app-store-optimizer",
+    "sprint-prioritizer", "feedback-synthesizer", "trend-researcher", "behavioral-nudge-engine",
+    "senior-project-manager", "project-shepherd", "studio-operations", "studio-producer", "experiment-tracker",
+    "visiones-spatial-engineer", "xr-immersive-developer", "xr-interface-architect", "xr-cockpit-interaction", "macos-spatial-metal", "terminal-integration",
+    "agents-orchestrator", "developer-advocate", "cultural-intelligence", "data-analytics-reporter", "data-consolidation", "report-distribution", "sales-data-extraction", "lsp-index-engineer",
+    "support-responder", "analytics-reporter", "executive-summary-generator", "finance-tracker", "infrastructure-maintainer", "legal-compliance-checker",
+    "accessibility-auditor", "api-tester", "performance-benchmarker", "test-results-analyzer", "evidence-collector", "reality-checker", "tool-evaluator", "workflow-optimizer"
+  ]
+}
