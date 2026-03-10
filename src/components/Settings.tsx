@@ -1,26 +1,21 @@
 import { useState } from 'react';
-import { useAuth } from '../utils/api';
 
 export default function Settings() {
-  const { user, token } = useAuth();
   const [activeTab, setActiveTab] = useState('profile');
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Profile state
   const [profile, setProfile] = useState({
-    name: user?.name || '',
-    email: user?.email || ''
+    name: '',
+    email: ''
   });
 
-  // Password state
   const [passwords, setPasswords] = useState({
     current: '',
     new: '',
     confirm: ''
   });
 
-  // API Keys state
   const [apiKeys, setApiKeys] = useState({
     openrouter: '',
     venice: '',
@@ -41,7 +36,6 @@ export default function Settings() {
     setMessage(null);
     
     try {
-      // Simulated - would call API
       await new Promise(r => setTimeout(r, 1000));
       setMessage({ type: 'success', text: 'Profile updated successfully!' });
     } catch (error) {
@@ -93,11 +87,15 @@ export default function Settings() {
     }
   };
 
-  const toggleShowKey = (provider) => {
-    setShowKeys(prev => ({ ...prev, [provider]: !prev[provider]));
+  const toggleShowKey = function(provider) {
+    setShowKeys(function(prev) {
+      var newState = {};
+      newState[provider] = !prev[provider];
+      return Object.assign({}, prev, newState);
+    });
   };
 
-  const integrations = [
+  var integrations = [
     {
       id: 'openrouter',
       name: 'OpenRouter.ai',
@@ -139,40 +137,34 @@ export default function Settings() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">⚙️ Settings</h1>
           <p className="text-gray-600 mt-2">Manage your account and integrations</p>
         </div>
 
-        {/* Message */}
         {message && (
-          <div className={`mb-6 p-4 rounded-lg ${message.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+          <div className={"mb-6 p-4 rounded-lg " + (message.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800')}>
             {message.text}
           </div>
         )}
 
-        {/* Tabs */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="flex border-b border-gray-200">
-            {['profile', 'security', 'integrations'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`flex-1 py-4 px-6 text-center font-medium capitalize transition-colors ${
-                  activeTab === tab
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-600 hover:bg-gray-50'
-                }`}
-              >
-                {tab === 'profile' && '👤 Profile'}
-                {tab === 'security' && '🔒 Security'}
-                {tab === 'integrations' && '🔗 Integrations'}
-              </button>
-            ))}
+            {['profile', 'security', 'integrations'].map(function(tab) {
+              return (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={"flex-1 py-4 px-6 text-center font-medium capitalize transition-colors " + (activeTab === tab ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-50')}
+                >
+                  {tab === 'profile' && '👤 Profile'}
+                  {tab === 'security' && '🔒 Security'}
+                  {tab === 'integrations' && '🔗 Integrations'}
+                </button>
+              );
+            })}
           </div>
 
-          {/* Profile Tab */}
           {activeTab === 'profile' && (
             <div className="p-6">
               <form onSubmit={handleProfileUpdate}>
@@ -184,7 +176,7 @@ export default function Settings() {
                     <input
                       type="text"
                       value={profile.name}
-                      onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                      onChange={(e) => setProfile(Object.assign({}, profile, { name: e.target.value }))}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                       placeholder="John Doe"
                     />
@@ -203,24 +195,6 @@ export default function Settings() {
                     <p className="mt-1 text-sm text-gray-500">Email cannot be changed</p>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Account Type
-                    </label>
-                    <div className="flex items-center gap-3">
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        user?.plan === 'paid' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-                      }`}>
-                        {user?.plan === 'paid' ? '✅ Pro' : '🆓 Trial'}
-                      </span>
-                      {user?.daysRemaining !== undefined && user.plan === 'trial' && (
-                        <span className="text-sm text-gray-500">
-                          {user.daysRemaining} days remaining
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
                   <button
                     type="submit"
                     disabled={loading}
@@ -233,7 +207,6 @@ export default function Settings() {
             </div>
           )}
 
-          {/* Security Tab */}
           {activeTab === 'security' && (
             <div className="p-6">
               <form onSubmit={handlePasswordChange}>
@@ -245,7 +218,7 @@ export default function Settings() {
                     <input
                       type="password"
                       value={passwords.current}
-                      onChange={(e) => setPasswords({ ...passwords, current: e.target.value })}
+                      onChange={(e) => setPasswords(Object.assign({}, passwords, { current: e.target.value }))}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                       placeholder="Enter current password"
                       required
@@ -259,7 +232,7 @@ export default function Settings() {
                     <input
                       type="password"
                       value={passwords.new}
-                      onChange={(e) => setPasswords({ ...passwords, new: e.target.value })}
+                      onChange={(e) => setPasswords(Object.assign({}, passwords, { new: e.target.value }))}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                       placeholder="Enter new password (min 8 characters)"
                       required
@@ -273,7 +246,7 @@ export default function Settings() {
                     <input
                       type="password"
                       value={passwords.confirm}
-                      onChange={(e) => setPasswords({ ...passwords, confirm: e.target.value })}
+                      onChange={(e) => setPasswords(Object.assign({}, passwords, { confirm: e.target.value }))}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                       placeholder="Confirm new password"
                       required
@@ -289,24 +262,9 @@ export default function Settings() {
                   </button>
                 </div>
               </form>
-
-              {/* Danger Zone */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <h3 className="text-lg font-medium text-red-600 mb-4">⚠️ Danger Zone</h3>
-                <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
-                  <div>
-                    <p className="font-medium text-red-900">Delete Account</p>
-                    <p className="text-sm text-red-600">Permanently delete your account and all data</p>
-                  </div>
-                  <button className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-                    Delete
-                  </button>
-                </div>
-              </div>
             </div>
           )}
 
-          {/* Integrations Tab */}
           {activeTab === 'integrations' && (
             <div className="p-6">
               <div className="mb-6">
@@ -318,48 +276,50 @@ export default function Settings() {
 
               <form onSubmit={handleSaveApiKeys}>
                 <div className="space-y-6">
-                  {integrations.map((integration) => (
-                    <div key={integration.id} className="border border-gray-200 rounded-lg p-4">
-                      <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl">{integration.logo}</span>
-                          <div>
-                            <h3 className="font-semibold text-gray-900">{integration.name}</h3>
-                            <p className="text-sm text-gray-500">{integration.description}</p>
+                  {integrations.map(function(integration) {
+                    return (
+                      <div key={integration.id} className="border border-gray-200 rounded-lg p-4">
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-2xl">{integration.logo}</span>
+                            <div>
+                              <h3 className="font-semibold text-gray-900">{integration.name}</h3>
+                              <p className="text-sm text-gray-500">{integration.description}</p>
+                            </div>
                           </div>
+                          <a
+                            href={integration.docs}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-indigo-600 hover:text-indigo-800"
+                          >
+                            Docs →
+                          </a>
                         </div>
-                        <a
-                          href={integration.docs}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-indigo-600 hover:text-indigo-800"
-                        >
-                          Docs →
-                        </a>
+                        
+                        <p className="text-xs text-gray-500 mb-3">
+                          Models: {integration.models}
+                        </p>
+                        
+                        <div className="relative">
+                          <input
+                            type={showKeys[integration.id] ? 'text' : 'password'}
+                            value={apiKeys[integration.id]}
+                            onChange={(e) => setApiKeys(Object.assign({}, apiKeys, (function(o) { o[integration.id] = e.target.value; return o; })({})))}
+                            className="w-full px-4 py-2 pr-20 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent font-mono text-sm"
+                            placeholder={integration.placeholder}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => toggleShowKey(integration.id)}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 text-sm"
+                          >
+                            {showKeys[integration.id] ? 'Hide' : 'Show'}
+                          </button>
+                        </div>
                       </div>
-                      
-                      <p className="text-xs text-gray-500 mb-3">
-                        Models: {integration.models}
-                      </p>
-                      
-                      <div className="relative">
-                        <input
-                          type={showKeys[integration.id] ? 'text' : 'password'}
-                          value={apiKeys[integration.id]}
-                          onChange={(e) => setApiKeys({ ...apiKeys, [integration.id]: e.target.value })}
-                          className="w-full px-4 py-2 pr-20 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent font-mono text-sm"
-                          placeholder={integration.placeholder}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => toggleShowKey(integration.id)}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 text-sm"
-                        >
-                          {showKeys[integration.id] ? 'Hide' : 'Show'}
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 <button
@@ -371,7 +331,6 @@ export default function Settings() {
                 </button>
               </form>
 
-              {/* Info Box */}
               <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <h4 className="font-medium text-blue-900 mb-2">💡 How it works</h4>
                 <ul className="text-sm text-blue-800 space-y-1">
